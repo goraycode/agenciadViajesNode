@@ -1,0 +1,46 @@
+extends  ./layout/index
+
+block contenido
+    main.main.container.py-5 
+        h1.text-center= pagina
+        
+        blockquote.text-center Lee sobre nuestros clientes y sus experiencias                        
+        .carousel-container.d-flex.flex-row.justify-content-center.testimoniales
+            .carousel.my-carousel.carousel--translate
+                each testimonio in testimonios
+                    input.carousel__activator(type="radio", name="carousel", id=testimonio, checked=(testimonio == testimonios[0]))
+                .carousel__track
+                    each testimonio in testimonios
+                        li.carousel__slide.d-flex.justify-content-center.align-items-center
+                            .card
+                                .card-body 
+                                    blockquote.blockquote 
+                                    p.mb-0  #{testimonio.mensaje}
+                                    footer.blockquote-footer #{testimonio.nombre}
+                .carousel__indicators
+                    each testimonio in testimonios
+                        label.carousel__indicator(for=testimonio)
+
+       
+        .row 
+            h2.d-block.w-100.text-center Agrega un testimonial 
+
+
+            .row.justify-content-center.col 
+                if(errores)
+                    each error in errores
+                        .col-md-8
+                            p.alert.alert-danger(role='alert') #{error}
+
+                .col-md-8
+                    form(action="/testimoniales" method="POST")
+                        .form-group 
+                            label(for="nombre") Nombre
+                            input#nombre(type="text", name="nombre", placeholder="Tu nombre", autocomplete = "off", class="form-control", value=nombre)
+                        .form-group 
+                            label(for="correo") Correo electrónico
+                            input#correo(type="email", name="correo", placeholder="Tu correo", autocomplete = "off", class="form-control", value=correo)
+                        .form-group 
+                            label(for="mensaje") Mensaje
+                            textarea#mensaje(name="mensaje", cols="30", rows="10", placeholder="Tu mensaje",class="form-control" ) #{mensaje}
+                        input.btn.btn-success.btn-block(type="submit")
