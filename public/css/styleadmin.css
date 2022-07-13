@@ -118,15 +118,57 @@ html {
   margin-left: -20rem;
 }
 
-.acciones{
+.acciones {
   display: flex;
 }
 
-.acciones button{
+.acciones button {
   background-color: unset;
   border: none;
 }
 
-.acciones button:hover{
+.acciones button:hover {
   background-color: #272d2de9;
+}
+
+/*====================================================
+formulario
+======================================================*/
+
+
+.contenedorform {
+  width: 90%;
+  margin: 2rem auto;
+}
+.contenedorform h1 {
+  text-align: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.form-data {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+.contenedorform button {
+  align-self: center;
+  background-color: cornflowerblue;
+  padding: 0.5rem 1rem;
+}
+
+.textArea {
+  display: flex;
+  flex-direction: column;
+}
+
+.textArea textarea{
+  resize: none;
+  overflow-y: scroll;
 }

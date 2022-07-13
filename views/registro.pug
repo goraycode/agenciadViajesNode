@@ -1,3 +1,31 @@
 extends ./layout/indexadmin
 block contenido 
-    p Aqui agregamos mas viajes
+    main.contenedorform
+        h1 Registrar nuevo viaje
+        form.form
+            .form-data
+                .form-group
+                    label(for='titulo') Titulo del viaje
+                    input#titulo.form-control(type='text', placeholder="Ejemplo: Perú")
+                .form-group
+                    label(for='precio') Precio
+                    input#precio.form-control(type='number', placeholder="Ejemplo: 3000", min=0)
+                .form-group
+                    label(for='fechaIda') Fecha Ida
+                    input#fechaIda.form-control(type='date')
+                .form-group
+                    label(for='fechaVuelta') Fecha Vuelta
+                    input#fechaVuelta.form-control(type='date')
+                .form-group
+                    label(for='formImagen') Agregar imagen
+                    input#formImagen.form-control-file(type='file', accept=".jpg, .png")
+                .form-group.textArea
+                    label(for='descripcion') Agregar descripcion
+                    textarea#descripcion(name="descripcion", cols="30", rows="5") 
+                .form-group
+                    label(for='disponibles') Disponibles
+                    input#disponibles.form-control(type='number', min=1)
+
+                
+            button.btn.btn-primary(type='submit') Agregar
+
