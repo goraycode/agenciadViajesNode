@@ -21,7 +21,7 @@ html(lang="en")
                     | Viajes
             section.principal
                 .principal__header 
-                    button.showcontenedor
+                    button.showcontenedor 
                         svg.icon.icon-tabler.icon-tabler-menu-2(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#272d2d' fill='none' stroke-linecap='round' stroke-linejoin='round')
                             path(stroke='none' d='M0 0h24v24H0z' fill='none')
                             line(x1='4' y1='6' x2='20' y2='6')
@@ -30,7 +30,7 @@ html(lang="en")
                     p Hola 
                 .principal__container
                     p.cabeza Gestionar viajes 
-                    button Nuevo registro
+                    button.btnregistro Nuevo registro
                     .table 
                        table.table
                         thead
@@ -55,6 +55,18 @@ html(lang="en")
                                 td Larry
                                 td the Bird
                                 td @twitter
+        script.
+            document.querySelector('.showcontenedor').addEventListener('click', () => efecto())
+            const nav = document.querySelector('.nav')
+            const principalContainer = document.querySelector('.principal__container');
+            const efecto = () => {
+                nav.classList.toggle('efectoSlide');
+                if(nav.classList.contains('efectoSlide')){
+                    principalContainer.style.width = '100vw';
+                }else{
+                    principalContainer.style.width = '85vw';
+                }
+            }
 
                 
 
