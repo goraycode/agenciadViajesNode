@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css' integrity='sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==' crossorigin='anonymous' referrerpolicy='no-referrer')
+        link(rel="stylesheet", href="/css/styleadmin.css")
+        title= titulo
+    body 
+        header.header 
+            nav.nav
+                p.agencia Agencia de Viajes
+                
+                button.contenedor.btn
+                    svg.icon.icon-tabler.icon-tabler-plane(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#ffff' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                        path(d='M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z')
+                    | Viajes
+            section.principal 
+                p.cabeza Gestionar viajes 
+                button Nuevo registro
+                
+
+            

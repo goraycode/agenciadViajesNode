@@ -1,0 +1,47 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  box-sizing: inherit;
+}
+.container {
+  max-width: 1200px;
+  width: 90%;
+  margin: 0 auto;
+}
+.header {
+  display: flex;
+}
+
+.nav {
+  background-color: #272d2dab;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.agencia {
+  font-size: 2rem;
+  padding: 0 2rem;
+}
+
+.contenedor {
+  margin-top: 10rem;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  gap: 2rem;
+}
+
+.btn {
+  border: none;
+  background-color: unset;
+  color: white;
+  padding: 0 1rem;
+}
+
+.btn:hover {
+  background-color: #272d2d;
+}

@@ -1,4 +1,5 @@
 import express from "express";
+import { paginaAdmin } from "../controllers/adminController.js";
 import {
     paginaInicio,
     paginaNosotros,
@@ -29,5 +30,8 @@ router.get('/viajes/:slug', paginaDetalleViaje)
 
 router.get('/testimoniales', paginaTestimoniales);
 router.post('/testimoniales', guardarTestimonial);
+
+
+router.get('/admin', paginaAdmin)
 
 export default router;

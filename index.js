@@ -4,7 +4,7 @@ import router from './routes/index.js';
 import db from './config/db.js';
 
 
-//para ejecutar eporess
+//para ejecutar express
 const app = express();
 
 //Conectar la base de datos
