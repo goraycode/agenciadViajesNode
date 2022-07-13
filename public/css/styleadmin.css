@@ -140,9 +140,11 @@ formulario
   width: 90%;
   margin: 2rem auto;
 }
+
 .contenedorform h1 {
   text-align: center;
 }
+
 
 .form {
   display: flex;

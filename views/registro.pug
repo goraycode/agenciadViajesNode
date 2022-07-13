@@ -2,30 +2,32 @@ extends ./layout/indexadmin
 block contenido 
     main.contenedorform
         h1 Registrar nuevo viaje
-        form.form
+        form.form(action="/registro" method="POST") 
             .form-data
                 .form-group
                     label(for='titulo') Titulo del viaje
-                    input#titulo.form-control(type='text', placeholder="Ejemplo: Perú")
+                    input#titulo.form-control(type='text', name="titulo",placeholder="Ejemplo: Perú")
                 .form-group
                     label(for='precio') Precio
-                    input#precio.form-control(type='number', placeholder="Ejemplo: 3000", min=0)
+                    input#precio.form-control(type='number', name="precio",placeholder="Ejemplo: 3000", min=0)
                 .form-group
                     label(for='fechaIda') Fecha Ida
-                    input#fechaIda.form-control(type='date')
+                    input#fechaIda.form-control(type='date', name="fechaIda")
                 .form-group
                     label(for='fechaVuelta') Fecha Vuelta
-                    input#fechaVuelta.form-control(type='date')
+                    input#fechaVuelta.form-control(type='date', name="fechaVuelta")
                 .form-group
                     label(for='formImagen') Agregar imagen
-                    input#formImagen.form-control-file(type='file', accept=".jpg, .png")
+                    input#formImagen.form-control-file(type='file', name="imagen",accept=".jpg, .png")
                 .form-group.textArea
                     label(for='descripcion') Agregar descripcion
                     textarea#descripcion(name="descripcion", cols="30", rows="5") 
                 .form-group
                     label(for='disponibles') Disponibles
-                    input#disponibles.form-control(type='number', min=1)
+                    input#disponibles.form-control(type='number', name="disponibles",min=1)
 
                 
             button.btn.btn-primary(type='submit') Agregar
 
+        if(mensaje)
+            p.alert.alert-danger.mt-5.text-center #{mensaje}

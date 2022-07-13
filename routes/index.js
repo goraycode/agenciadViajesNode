@@ -1,5 +1,5 @@
 import express from "express";
-import { paginaAdmin, registroViaje } from "../controllers/adminController.js";
+import { guardarViajeNuevo, paginaAdmin, registroViaje } from "../controllers/adminController.js";
 import {
     paginaInicio,
     paginaNosotros,
@@ -34,5 +34,8 @@ router.post('/testimoniales', guardarTestimonial);
 
 router.get('/admin', paginaAdmin);
 router.get('/registro', registroViaje);
+//guardar el nuevo viaje creado
+router.post('/registro', guardarViajeNuevo);
+
 
 export default router;
