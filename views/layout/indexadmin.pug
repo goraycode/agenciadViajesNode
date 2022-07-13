@@ -1,0 +1,52 @@
+doctype html
+html(lang="en")
+    head
+        meta(charset="UTF-8")
+        meta(http-equiv="X-UA-Compatible", content="IE=edge")
+        meta(name="viewport", content="width=device-width, initial-scale=1.0")
+        link(rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css' integrity='sha512-NhSC1YmyruXifcj/KFRWoC561YpHpc5Jtzgvbuzx5VozKpWvQ+4nXhPdFgmx8xqexRcpAglTj9sIBWINXa8x5w==' crossorigin='anonymous' referrerpolicy='no-referrer')
+        link(rel="stylesheet", href="/css/bootstrap.css")
+        link(rel="stylesheet", href="/css/styleadmin.css")
+        link(rel="shortcut icon", href="/img/administrador.png", type="image/x-icon")
+        title= titulo
+    body 
+        header.header 
+            nav.nav
+                p.agencia Agencia de Viajes
+                
+                button.contenedor.btn
+                    svg.icon.icon-tabler.icon-tabler-plane(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#ffff' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                        path(d='M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z')
+                    | Viajes
+            section.principal
+                .principal__header 
+                    button.showcontenedor 
+                        svg.icon.icon-tabler.icon-tabler-menu-2(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#272d2d' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                            path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                            line(x1='4' y1='6' x2='20' y2='6')
+                            line(x1='4' y1='12' x2='20' y2='12')
+                            line(x1='4' y1='18' x2='20' y2='18')
+                    p Hola
+                .principal__container
+                    block contenido
+        
+        script.
+            document.querySelector('.showcontenedor').addEventListener('click', () => efecto())
+            const nav = document.querySelector('.nav')
+            const principalContainer = document.querySelector('.principal__container');
+            const efecto = () => {
+                nav.classList.toggle('efectoSlide');
+                if(nav.classList.contains('efectoSlide')){
+                    principalContainer.style.width = '100vw';
+                }else{
+                    principalContainer.style.width = '85vw';
+                }
+            }
+
+            const btnViaje = document.querySelector('.contenedor');
+            const redirigir = () => {
+                window.location.href= '/admin'
+            }
+
+            btnViaje.addEventListener('click', ()=> redirigir())

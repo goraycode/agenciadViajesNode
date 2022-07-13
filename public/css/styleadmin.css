@@ -3,6 +3,14 @@
 *::after {
   box-sizing: border-box;
 }
+
+img {
+  width: 10rem;
+  height: auto;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
 body {
   font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
     "Lucida Sans", Arial, sans-serif;
@@ -21,7 +29,7 @@ html {
 
 .nav {
   background-color: #272d2de9;
-  height: 100vh;
+  height: calc(100vh + 550px);
   display: flex;
   flex-direction: column;
   transition: margin-left 1s ease-in-out;
@@ -85,7 +93,7 @@ html {
   padding: 0 2rem;
   background-color: #ededed;
   width: 85vw;
-  height: calc(100vh - 58px);
+  height: calc(100vh + 490px);
 }
 
 .cabeza {
@@ -108,4 +116,17 @@ html {
 
 .efectoSlide {
   margin-left: -20rem;
+}
+
+.acciones{
+  display: flex;
+}
+
+.acciones button{
+  background-color: unset;
+  border: none;
+}
+
+.acciones button:hover{
+  background-color: #272d2de9;
 }
