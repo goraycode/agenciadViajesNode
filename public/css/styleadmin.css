@@ -3,6 +3,10 @@
 *::after {
   box-sizing: border-box;
 }
+body {
+  font-family: "Trebuchet MS", "Lucida Sans Unicode", "Lucida Grande",
+    "Lucida Sans", Arial, sans-serif;
+}
 html {
   box-sizing: inherit;
 }
@@ -16,7 +20,7 @@ html {
 }
 
 .nav {
-  background-color: #272d2dab;
+  background-color: #272d2de9;
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -24,11 +28,13 @@ html {
 
 .agencia {
   font-size: 2rem;
-  padding: 0 2rem;
+  padding: 0 2rem 0.5rem;
+  color: white;
+  border-bottom: 1px solid #272d2d;
 }
 
 .contenedor {
-  margin-top: 10rem;
+  margin-top: 2rem;
   display: flex;
   justify-content: flex-start;
   align-items: center;
@@ -44,4 +50,39 @@ html {
 
 .btn:hover {
   background-color: #272d2d;
+}
+.principal {
+  display: flex;
+  flex-direction: column;
+}
+
+.principal__header {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  padding: 0 0 0 2rem;
+}
+.showcontenedor {
+  background-color: unset;
+  padding: 0;
+  margin: 0;
+  border: none;
+}
+.showcontenedor svg {
+  width: 1.5rem;
+  height: 1.5rem;
+}
+
+.principal__container {
+  padding: 0 2rem;
+  background-color: #ededed;
+  width: 85vw;
+}
+
+.cabeza {
+  font-size: 1.5rem;
+}
+
+.table{
+    margin-top: 2rem;
 }
