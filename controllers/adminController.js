@@ -103,10 +103,29 @@ const guardarViajeNuevo = async (req, res) => {
 
 }
 
+const editarViaje = async (req, res) => {
+    //obtener el id del viaje clickeado
+    const params = new URLSearchParams(req.url);
+    let id;
+    for (let value of params.values()) {
+        id = value;
+    }
+    const viajeSeleccionado = await Viaje.findAll({
+        where: {
+            id: id
+        }
+    });
+
+    res.render('editarViaje', {
+        viajeSeleccionado
+    });
+}
+
 
 export {
     paginaAdmin,
     registroViaje,
     guardarViajeNuevo,
-    multerStorage
+    multerStorage,
+    editarViaje
 }

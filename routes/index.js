@@ -4,7 +4,8 @@ import {
     guardarViajeNuevo,
     paginaAdmin,
     registroViaje,
-    multerStorage
+    multerStorage,
+    editarViaje
 } from "../controllers/adminController.js";
 import {
     paginaInicio,
@@ -47,6 +48,8 @@ router.get('/registro', registroViaje);
 //guardar el nuevo viaje creado
 router.post('/registro', upload.single('imagen'), guardarViajeNuevo);
 
+//editar viaje
+router.get('/editarviaje', editarViaje);
 
 
 export default router;

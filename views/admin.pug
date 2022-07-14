@@ -27,7 +27,7 @@ block contenido
                         td #{viaje.disponibles}
                         td 
                             .acciones 
-                                button.editar 
+                                button.editar(data-element=`${viaje.id}`) 
                                     svg.icon.icon-tabler.icon-tabler-edit(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#00abfb' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                         path(stroke='none' d='M0 0h24v24H0z' fill='none')
                                         path(d='M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3')
@@ -72,5 +72,15 @@ block contenido
         }
         btnsEliminar.forEach(btn => {
             btn.addEventListener('click', () => getData(btn.dataset.element));
+        })
+
+        const btnsEditar = document.querySelectorAll('.editar');
+
+        const actualizarViaje = (id) => {
+            window.location.href = `/editarviaje?id=${id}`
+        }
+
+       btnsEditar.forEach(btn => {
+            btn.addEventListener('click', () => actualizarViaje(btn.dataset.element));
         })
         
