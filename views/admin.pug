@@ -33,7 +33,7 @@ block contenido
                                         path(d='M9 7h-3a2 2 0 0 0 -2 2v9a2 2 0 0 0 2 2h9a2 2 0 0 0 2 -2v-3')
                                         path(d='M9 15h3l8.5 -8.5a1.5 1.5 0 0 0 -3 -3l-8.5 8.5v3')
                                         line(x1='16' y1='5' x2='19' y2='8')
-                                button.eliminar(data-element=`${viaje.id}`)     
+                                button.eliminar(data-element=`${viaje.id}`)
                                     svg.icon.icon-tabler.icon-tabler-trash(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#ff2825' fill='none' stroke-linecap='round' stroke-linejoin='round')
                                         path(stroke='none' d='M0 0h24v24H0z' fill='none')
                                         line(x1='4' y1='7' x2='20' y2='7')
@@ -41,6 +41,8 @@ block contenido
                                         line(x1='14' y1='11' x2='14' y2='17')
                                         path(d='M5 7l1 12a2 2 0 0 0 2 2h8a2 2 0 0 0 2 -2l1 -12')
                                         path(d='M9 7v-3a1 1 0 0 1 1 -1h4a1 1 0 0 1 1 1v3')
+
+    script(src='//cdn.jsdelivr.net/npm/sweetalert2@11')
     script.
         const btnRegistro  = document.querySelector('.btnregistro')
         const movForm = () => {
@@ -50,9 +52,25 @@ block contenido
 
         const btnsEliminar = document.querySelectorAll('.eliminar');
         const getData = (value) => {
-            
-            window.location.href = `/admin?id=${value}`
+            Swal.fire({
+                title: '¿Estás seguro?',
+                text: "No se podrá revertir si confirmas",
+                icon: 'warning',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Eliminar'
+            }).then((result) => {
+                if (result.isConfirmed) {
+                    window.location.href = `/admin?id=${value}`
+                }else{
+                    window.location.href = '/admin';
+                }
+            });
+
+
         }
         btnsEliminar.forEach(btn => {
             btn.addEventListener('click', () => getData(btn.dataset.element));
         })
+        
