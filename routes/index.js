@@ -1,4 +1,5 @@
 import express from "express";
+import multer from "multer";
 import { guardarViajeNuevo, paginaAdmin, registroViaje } from "../controllers/adminController.js";
 import {
     paginaInicio,
@@ -11,6 +12,7 @@ import {
 import { guardarTestimonial } from "../controllers/testimonialesController.js";
 
 const router = express.Router();
+const upload = multer({dest:'./public/img/'});
 
 
 
@@ -35,7 +37,7 @@ router.post('/testimoniales', guardarTestimonial);
 router.get('/admin', paginaAdmin);
 router.get('/registro', registroViaje);
 //guardar el nuevo viaje creado
-router.post('/registro', guardarViajeNuevo);
+router.post('/registro',upload.single('imagen'),guardarViajeNuevo);
 
 
 export default router;

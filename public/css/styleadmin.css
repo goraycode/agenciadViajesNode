@@ -152,7 +152,7 @@ formulario
   justify-content: center;
 }
 
-.form-data {
+.form-datas {
   display: flex;
   flex-wrap: wrap;
   justify-content: space-evenly;

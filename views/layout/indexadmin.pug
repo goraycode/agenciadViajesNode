@@ -13,12 +13,19 @@ html(lang="en")
         header.header 
             nav.nav
                 p.agencia Agencia de Viajes
-                
-                button.contenedor.btn
+                button.contenedor.btn.enlaceweb
+                    svg.icon.icon-tabler.icon-tabler-eye(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#ffffff' fill='none' stroke-linecap='round' stroke-linejoin='round')
+                        path(stroke='none' d='M0 0h24v24H0z' fill='none')
+                        circle(cx='12' cy='12' r='2')
+                        path(d='M22 12c-2.667 4.667 -6 7 -10 7s-7.333 -2.333 -10 -7c2.667 -4.667 6 -7 10 -7s7.333 2.333 10 7')
+                    | Visitar sitio web   
+                button.contenedor.btn.viajes
                     svg.icon.icon-tabler.icon-tabler-plane(xmlns='http://www.w3.org/2000/svg' width='44' height='44' viewbox='0 0 24 24' stroke-width='1.5' stroke='#ffff' fill='none' stroke-linecap='round' stroke-linejoin='round')
                         path(stroke='none' d='M0 0h24v24H0z' fill='none')
                         path(d='M16 10h4a2 2 0 0 1 0 4h-4l-4 7h-3l2 -7h-4l-2 2h-3l2 -4l-2 -4h3l2 2h4l-2 -7h3z')
                     | Viajes
+             
+
             section.principal
                 .principal__header 
                     button.showcontenedor 
@@ -44,9 +51,16 @@ html(lang="en")
                 }
             }
 
-            const btnViaje = document.querySelector('.contenedor');
+            const btnViaje = document.querySelector('.viajes');
             const redirigir = () => {
-                window.location.href= '/admin'
+                window.location.href= '/admin';
             }
 
             btnViaje.addEventListener('click', ()=> redirigir())
+
+            const btnWeb = document.querySelector('.enlaceweb');
+            const inicio = () => {
+                window.location.href = '/';
+            }
+
+            btnWeb.addEventListener('click', ()=> inicio())

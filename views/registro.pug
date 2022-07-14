@@ -2,8 +2,8 @@ extends ./layout/indexadmin
 block contenido 
     main.contenedorform
         h1 Registrar nuevo viaje
-        form.form(action="/registro" method="POST") 
-            .form-data
+        form.form(action="/registro" method="POST" enctype='multipart/form-data') 
+            .form-datas
                 .form-group
                     label(for='titulo') Titulo del viaje
                     input#titulo.form-control(type='text', name="titulo",placeholder="Ejemplo: Perú")
