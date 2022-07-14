@@ -1,9 +1,32 @@
 import path from 'path';
 import multer from "multer";
 import { Viaje } from "../models/Viaje.js";
-import { DATE } from 'sequelize';
+
 
 const paginaAdmin = async (req, res) => {
+
+    //obtener el id del viaje clickeado
+    const params = new URLSearchParams(req.url);
+    let id;
+    for (let value of params.values()) {
+        id = value;
+    }
+
+    //eliminar el viaje de la base de datos
+    // Delete everyone named "Jane"
+    try {
+        await Viaje.destroy({
+            where: {
+                id: id
+            }
+        });
+    } catch (error) {
+        console.error(error)
+    }
+
+
+
+
     const titulo = 'Panel de administrador';
     const viajes = await Viaje.findAll();
 
@@ -78,11 +101,8 @@ const guardarViajeNuevo = async (req, res) => {
         }
     }
 
-
-
-
-
 }
+
 
 export {
     paginaAdmin,
