@@ -1,6 +1,7 @@
 import path from 'path';
 import multer from "multer";
 import { Viaje } from "../models/Viaje.js";
+import { DATE } from 'sequelize';
 
 const paginaAdmin = async (req, res) => {
     const titulo = 'Panel de administrador';
@@ -19,7 +20,20 @@ const registroViaje = (req, res) => {
     })
 }
 
+//guardamos la imagen en public/image
+//Find extension of file
+const multerStorage = multer.diskStorage({
+    destination: function (req, file, cb) {
+        cb(null, "./public/img/");
+    },
+    filename: function (req, file, cb) {
+        const { titulo } = req.body;
+        const fileName = titulo.toLowerCase().trim();
+        const ext = file.mimetype.split("/")[1];
+        cb(null, `destinos_${fileName}${path.extname(file.originalname)}`);
 
+    },
+});
 
 const guardarViajeNuevo = async (req, res) => {
     //validamos las entradas
@@ -55,30 +69,6 @@ const guardarViajeNuevo = async (req, res) => {
 
             });
 
-            //guardamos la imagen en public/image
-            //Find extension of file
-
-            const imagen = req.file.originalname;
-
-            let storage = multer.diskStorage({
-                destination: function (req, file, cb) {
-                    cb(null, "./public/img/");
-                },
-                filename: function (req, file, cb) {
-                    cb(null, imagen);
-                    
-                },
-            });
-
-            let upload = multer({
-                storage: storage
-            })
-
-            console.log(storage);
-
-
-
-
 
             //redireccionamos al panel principal
             res.redirect('/admin');
@@ -97,5 +87,6 @@ const guardarViajeNuevo = async (req, res) => {
 export {
     paginaAdmin,
     registroViaje,
-    guardarViajeNuevo
+    guardarViajeNuevo,
+    multerStorage
 }
