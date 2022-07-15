@@ -1,4 +1,35 @@
 extends ./layout/indexadmin
 block contenido
-    p Editar viaje
-    p= JSON.stringify(viajeSeleccionado)
+    
+    main.contenedorEditar
+        h1.text-center.mt-5 Actualizar viaje
+        form.form(action="/editarviaje", method="POST" enctype='multipart/form-data') 
+            input#id(type='hidden' name='id', value=id)
+            .form-group
+                label(for='titulo') Titulo de viaje
+                input#titulo.form-control(type='text', name="titulo", value=titulo) 
+            .form-group
+                label(for='precio') Precio
+                input#precio.form-control(type='number', name="precio", value=precio)
+            .form-group
+                    label(for='fechaIda') Fecha Ida
+                    input#fechaIda.form-control(type='date', name="fechaIda", value=fecha_ida)
+            .form-group
+                label(for='fechaVuelta') Fecha Vuelta
+                input#fechaVuelta.form-control(type='date', name="fechaVuelta", value=fecha_vuelta)
+            .form-group
+                    p Imagen actual
+                    img(src=`/img/destinos_${imagen}.jpg`, alt="")
+                    label(for='formImagen') Seleccionar otra imagen
+                    input#formImagen.form-control-file(type='file', name="imagen", accept=".jpg" value=imagen)
+            .form-group.textArea
+                label(for='descripcion') Agregar descripcion
+                textarea#descripcion(name="descripcion", cols="30", rows="5") #{descripcion}
+            .form-group
+                label(for='disponibles') Disponibles
+                input#disponibles.form-control(type='number', name="disponibles",min=1, value=disponibles)
+            button.btnactualizar.btn.btn-primary(type='submit') Actualizar
+        
+        if(mensaje)
+            p.alert.alert-danger.mt-5.text-center #{mensaje}    
+        

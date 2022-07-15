@@ -106,19 +106,88 @@ const guardarViajeNuevo = async (req, res) => {
 const editarViaje = async (req, res) => {
     //obtener el id del viaje clickeado
     const params = new URLSearchParams(req.url);
-    let id;
+    let idViaje;
     for (let value of params.values()) {
-        id = value;
+        idViaje = value;
     }
     const viajeSeleccionado = await Viaje.findAll({
         where: {
-            id: id
+            id: idViaje
         }
     });
+    const [values] = viajeSeleccionado;
+    const { id,
+        titulo,
+        precio,
+        fecha_ida,
+        fecha_vuelta,
+        imagen,
+        descripcion,
+        disponibles,
+        slug } = values.dataValues;
 
-    res.render('editarViaje', {
-        viajeSeleccionado
+
+
+
+    res.render('editarviaje', {
+        id,
+        titulo,
+        precio,
+        fecha_ida,
+        fecha_vuelta,
+        imagen,
+        descripcion,
+        disponibles,
+        slug
     });
+}
+
+const actualizarViaje = async (req, res) => {
+
+    //validamos las entradas
+    let campos = [];
+    const { id,
+        titulo,
+        precio,
+        fechaIda,
+        fechaVuelta,
+        descripcion,
+        disponibles } = req.body;
+
+    campos = [titulo, precio, fechaIda, fechaVuelta, descripcion, disponibles];
+
+    const camposvacios = campos.some(campo => campo === '');
+    if (camposvacios) {
+        const mensaje = 'Todos los campos son obligatorios';
+        res.render('registro', {
+            mensaje
+        })
+    } else {
+        const tituloMenor = titulo.toLowerCase().trim();
+        //almacenamos los datos en la base de datos
+        try {
+            await Viaje.update({
+                titulo,
+                precio,
+                fecha_ida: fechaIda,
+                fecha_vuelta: fechaVuelta,
+                imagen: tituloMenor,
+                descripcion,
+                disponibles,
+                slug: `viaje-${tituloMenor}`
+            }, {
+                where: {
+                    id
+                }
+            });
+
+            //redireccionamos al panel principal
+            res.redirect('/admin');
+
+        } catch (error) {
+            console.error(error)
+        }
+    }
 }
 
 
@@ -127,5 +196,6 @@ export {
     registroViaje,
     guardarViajeNuevo,
     multerStorage,
-    editarViaje
+    editarViaje,
+    actualizarViaje
 }

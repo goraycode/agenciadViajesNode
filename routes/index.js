@@ -5,7 +5,8 @@ import {
     paginaAdmin,
     registroViaje,
     multerStorage,
-    editarViaje
+    editarViaje,
+    actualizarViaje
 } from "../controllers/adminController.js";
 import {
     paginaInicio,
@@ -50,6 +51,7 @@ router.post('/registro', upload.single('imagen'), guardarViajeNuevo);
 
 //editar viaje
 router.get('/editarviaje', editarViaje);
+router.post('/editarviaje',upload.single('imagen'), actualizarViaje);
 
 
 export default router;

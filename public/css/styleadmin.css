@@ -101,7 +101,8 @@ html {
   font-size: 1.5rem;
 }
 
-.btnregistro {
+.btnregistro,
+.btnactualizar {
   margin: 1rem 0 0;
   border-radius: 0.2rem;
   border: 1px solid cornflowerblue;
@@ -135,7 +136,6 @@ html {
 formulario
 ======================================================*/
 
-
 .contenedorform {
   width: 90%;
   margin: 2rem auto;
@@ -144,7 +144,6 @@ formulario
 .contenedorform h1 {
   text-align: center;
 }
-
 
 .form {
   display: flex;
@@ -170,7 +169,12 @@ formulario
   flex-direction: column;
 }
 
-.textArea textarea{
+.textArea textarea {
   resize: none;
   overflow-y: scroll;
+}
+
+.contenedorEditar {
+  width: 50%;
+  margin: 0 auto;
 }
